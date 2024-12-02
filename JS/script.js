@@ -16,7 +16,7 @@ var myStickman = document.getElementById("stickman");
 var context = myStickman.getContext("2d");
 const deuxJoueurs = document.getElementById("deuxJoueurs")
 
-fermerDialogue.addEventListener('click', fermerLaMechanteBoite);
+
 //Fonction nous permettent au load de la pages et des ressources 
 //de creer un délai alétoire pour l'évènement(De pourquoi l'utilisation d'un DOMloader)
 document.addEventListener('DOMContentLoaded', function(){
