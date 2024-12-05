@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function(){
   setTimeout(Surprise, tempsAleatoire)
 })
 window.addEventListener('load', function(){
-  if (localStorage.getItem('cacherDialogue') === "false")
+  if (localStorage.getItem('cacherDialogue') === null)
     { 
      dialogue.showModal();
      console.log(localStorage.getItem('cacherDialogue'))
@@ -37,7 +37,7 @@ window.addEventListener('load', function(){
 FermerDialogue.addEventListener('click', FermerBoite)
 fermerDialogue.addEventListener('click', FermerToujours)
 function FermerToujours(){
-  localStorage.setItem('cacherDialogue', '');
+  localStorage.setItem('cacherDialogue', 'false');
   dialogue.close();
 }
 
