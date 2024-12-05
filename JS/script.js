@@ -1,4 +1,6 @@
-//const
+
+//Initiliasitiation des variables
+const FermerDialogue = document.getElementById("BouttonFermerDialogue");
 const fermerDialogue = document.getElementById("dialogFermer");
 const dialogue = document.querySelector("dialog");
 const container = document.getElementById("alphabetButtons");
@@ -20,9 +22,23 @@ const deuxJoueurs = document.getElementById("deuxJoueurs")
 //Fonction nous permettent au load de la pages et des ressources 
 //de creer un délai alétoire pour l'évènement(De pourquoi l'utilisation d'un DOMloader)
 document.addEventListener('DOMContentLoaded', function(){
-  let tempsAleatoire = Math.random() * 7500 + 10000; //Temps avant que l'évènements se clenche
+  let tempsAleatoire = Math.random() * 10000 + 10000; //Temps avant que l'évènements se clenche
   setTimeout(Surprise, tempsAleatoire)
+  dialogue.showModal()
+  if (!localStorage.getItem('cacherDialogue'))
+     { 
+      dialogue.showModal();
+     }
 })
+
+//Fonction pour fermer la boite de dialogue 1 seule fois ou pour toujours
+FermerDialogue.addEventListener('click', FermerBoite)
+fermerDialogue.addEventListener('click', FermerToujours)
+function FermerToujours(){
+  localStorage.setItem('cacherDialogue', 'true');
+  dialogue.close();
+}
+
 //Fonction Surprise enclanché Aléatoirement 
 function Surprise(){
 
@@ -42,7 +58,12 @@ function Surprise(){
   console.log("Fin Fonction surprise")
 }
 
-//generate alphabet button
+//Pour fermer la boite de dialogue(elle vas revenir et encore et encore et encore et encore et encore et encore et encore et encore et encore et encore et encore et encore et encore et encore et encore et encore et encore et encore)
+function FermerBoite(){
+dialogue.close();
+}
+
+//Sert pour générer l'alphabet en boutton
 function generateButton() {
   var buttonsHTML = "abcdefghijklmnopqrstuvwxyzéèê"
     .split("")
@@ -63,16 +84,11 @@ function generateButton() {
 function handleClick(event) {
   const isButton = event.target.nodeName === "BUTTON";
   if (isButton) {
-    //console.dir(event.target.id);
-    //console.log(isButton);
     const buttonId = document.getElementById(event.target.id);
     buttonId.classList.add("selected");
   }
   return;
 }
-
-
-//word array
 
 //Pour Insérer des questions c'est ici.
 const question = [
@@ -83,10 +99,11 @@ const question = [
   "La catégorie choisie est les maladie!!!",
   "La catégorie choisie est les plantes",
 ];
+
 //Pour ajouter de nouvelle catégorie//
 const categories = [
   [
-    "leon",
+    "léon",
     "persil",
     "tigrou",
     "socrate",
@@ -103,13 +120,13 @@ const categories = [
     ],
 
   [
-    "nucleon",
+    "nucléon",
     "positron",
     "spallation",
     "photon",
-    "nucleosynthese"],
+    "nucléosynthèse"],
     [
-        "zebre",
+        "zêbre",
         "axolotl",
         "quokka",
         "tarsier",
@@ -144,6 +161,7 @@ const categories = [
       ]
 
 ];
+
 //Pour ajouter des indices//
 const hints = [
   [
@@ -206,7 +224,7 @@ const hints = [
  
 ];
 
-//set question,answer and hint
+
 //Le jeu de base Pour choisir une question au hasard
 function setAnswer() {
   
@@ -218,8 +236,7 @@ function setAnswer() {
   const categoryNameJS = document.getElementById("categoryName");
   categoryNameJS.innerHTML = question[categoryOrder];
 
-  //console.log(chosenCategory);
-  //console.log(chosenWord);
+  
   answer = chosenWord;
   hint = hints[categoryOrder][wordOrder];
   answerDisplay.innerHTML = generateAnswerDisplay(chosenWord);
@@ -229,7 +246,7 @@ function setAnswer() {
     wordDisplay = [];
     var wordArray = word.split("");
     
-    //console.log(wordArray);
+    
     for (var i = 0; i < answer.length; i++) {
       if (wordArray[i] !== "-") {
         wordDisplay.push("_");
@@ -240,14 +257,16 @@ function setAnswer() {
     console.log(word)
     return wordDisplay.join(" ");
   }
+
 //La fonction pour faire afficher l'indice
 function showHint() {
   containerHint.innerHTML = `Clue - ${hint}`;
 }
+
 //Le listener de l'indice
 buttonHint.addEventListener("click", showHint);
 
-//setting initial condition
+
 //L'initilialisation du jeu en solo est ici (Aussi pour se setter en godmod :D )
 function init() {
   answer = "";
@@ -282,19 +301,17 @@ function init2Joueurs() {
   const categoryNameJS = document.getElementById("categoryName");
   categoryNameJS.remove();
   categoryNameJS.innerHTML = prompt("Quelle thème voulez vous faire deviner?", "rien")
-  
-  
   console.log(answer);
-  //console.log(hint);
+  
 }
 //Ce qui lance la fonction init au démarrage de la page
 window.onload = init();
 
-//reset (play again)
+
 //Bon je pense que en même en anglais c'est assez clair
 buttonReset.addEventListener("click", init);
 
-//guess click
+
 //quand la personne appuie sur une touche pour deviner c'est ici
 function guess(event) {
   const guessWord = event.target.id;
@@ -311,7 +328,6 @@ function guess(event) {
           console.log(guessWord);
           answerDisplay.innerHTML = wordDisplay.join(" ");
           winningCheck = wordDisplay.join("");
-          //console.log(winningCheck)
           counter += 1;
         }
       }
@@ -333,8 +349,7 @@ function guess(event) {
       return;
     }
     console.log(wordDisplay);
-    //console.log(counter);
-    //console.log(life);
+
     if (answer === winningCheck) {
       livesDisplay.innerHTML = `Vous gagnez!`;
       return;
@@ -343,8 +358,10 @@ function guess(event) {
 }
 //Le listener pour la fonction "Deviner"
 container.addEventListener("click", guess);
-//fonctions pour jouer à deux joueurs//
+
+//Un listener pour savoir si le joueur veux jouer à deux//
 deuxJoueurs.addEventListener("click",jouerADeux)
+
 function jouerADeux() { 
   var reponseUtilisateur = prompt("Quel mot allez-vous faire deviner à votre ami :D", "hello-world");
   //Condition qui Évite l'utilisitateur de tout briser :(

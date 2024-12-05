@@ -2,76 +2,63 @@
 <html>
   <head>
     <title>Projet du pendu</title>
-    <meta charset="UTF-8" />
-    <link href="/CSS/style.css" rel="stylesheet" type="text/css" />
+    <meta charset ="UTF-8" />
+    <link href ="/CSS/style.css" rel="stylesheet" type="text/css" />
   </head>
 
   <body>
-    
+
+    <!--En tête de la page-->
       <h1 id="Titre">le pendu</h1> 
       <h2>Jeu du pendu en Javascript</h2>
-      <p>
+      <p id="principal">
         Utilisez l'alphabet ci-dessous pour deviner le mot, ou cliquez sur indice pour obtenir un indice.
       </p>
-
+      <!--Fin de l'entête de la page-->
 
       <!-- Début de ma boîte de dialogue-->
-  <dialog open id="dialogue"> 
-    <div>
-      <h1>Projet personnel</h1> 
-      <p>Design web gr.2 - Automne 2024</p>
-    </div>
-
-  <div id="parent-container">
-    <div class="container"> 
-      <p><b>Réalisé par </b></p>
-      <p><i>Pierrick Thierry</i></p>
-      </div>
-
-      <div class="imgContainer">
-       <img src="Asset/img/megaman.png" style="height: 150px; width: 150px;">
+  <dialog id="dialogue"> 
+      <h1 class="typo" id="border" style="top: 25%;"><b>Projet personnel</b></h1> 
+      <p class="typo" id="dessous"><i>Design web gr.2 - Automne 2024</i></p>
+    <div id="parent-container">
+     <div class="container"> 
+       <p class ="typo" class="typo2"><b>Réalisé par </b></p>
+       <p class ="typo" class="typo2"><i>Pierrick Thierry</i></p>
+       <p class ="typo" class="typo2"><b>Inspiration</b></p>
+       <p class ="typo" class="typo2"><i><a href="https://www.linkedin.com/in/pierrick-thierry-400b9b33b/" target="_blank">Pierrick Thierry</a></i></p>  
      </div>
-
-    <div class="container">
-     <p><b>Inspiration</b></p>
-      <p><i>https://www.facebook.com/pierrick.thierry</i></p>
+     <div id="container2">
+      <img src="Asset/img/megaman.png" style="height: 250px; width: 250px;" alt="Image de Mégaman">
+     </div>
     </div>
-  </div>
- <form method="dialog">
-  
-     <button>OK</button>
-     <p><i id="dialogFermer">Ne plus afficher cette fenêtre</i></p>
-
-  </form>
- 
-    </dialog>
-  <div class="backdrop">
-      <!-- Fin de ma boîte de dialogue--> 
+    <div id ="bouton">
+      <button id="BouttonFermerDialogue" onclick="FermerBoite()">Fermer cette fenêtre</button>
+      <p class="typo"><i id="dialogFermer">Ne plus afficher cette fenêtre</i></p>
     </div>
+  </dialog>   
+  <!-- Fin de ma boîte de dialogue--> 
 
-    <div class="wrapper">
       <!--Fonction Surprise caché-->
-<div>
-  <img src="/Asset/img/MysteryMan.png" type=""  id="imageSurprise">
+  <img src ="/Asset/img/MysteryMan.png" type="png"  id="imageSurprise" alt="Image Surprise">
   <audio src="/Asset/mp3/hmmm.mp3" id="sonsSurprise" ></audio>
- </div>   
+    <!--Fonction Surprise caché Fin-->
+
+    <!--Jeu du pendu faite en JS(Début)-->
       <div class="alphabetButton" id="alphabetButtons"></div>
       <p id="categoryName"></p>
       <div id="hold"></div>
       <p id="mylives"></p>
- 
       <p id="clue">Clue -</p>
-      <canvas id="stickman"
-        >Ce texte s'affichera si le navigateur ne supporte pas le HTML5. Canvas
-        tag</canvas
-      >
-      <div class="container">  
+      <canvas id="stickman">
+        Ce texte s'affiche si le navigateur ne supporte pas le HTML5.
+      </canvas>
+      <div class="container-bouton">  
         <button class="btn-2" id="hint">Indice</button>
         <button class="btn-2" id="deuxJoueurs">2 joueurs</button>
         <button class="btn-2" id="reset">Rejouer</button>
       </div>
-    </div>
+      <!--Fin du jeu du pendu en JS-->
+
     <script src="/JS/script.js"></script>
-  </div>
   </body>
 </html>

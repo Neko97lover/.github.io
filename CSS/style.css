@@ -1,3 +1,19 @@
+:root{
+  --Couleur-Backdrop:rgba(93, 188, 251, 0.5);
+  --Couleur--Fond1: rgb(133, 25, 2);
+  --Couleur--Fond2: rgb(5, 124, 9);
+  --Couleur--Fond3: rgb(5, 61, 124);
+  --Couleur--principal:rgb(74, 5, 124);
+}
+
+
+
+
+
+
+
+
+
 /*Animation Pour Enrollement des jeunes*/ 
 /*@keyframes animationBackground {
   0% {background-color: black;}
@@ -22,12 +38,13 @@
 
 }*/
  /*Animation qui fait saigner des yeux après 1 heures de travaille*/ 
+ /*Un peu de compasion pour la personne qui à quand même a peu prêt travaillé 14 heures avec ce fond la*/
 @keyframes animationBackground {
-    0% { background-color: #ff000093; }
-    25% { background-color: #00ff0080; }
-    50% { background-color: #0000ff9c; }
-    75% {background-color: #00ff0080; }
-    100%{background-color: #ff000093; }
+    0% { background-color: var(--Couleur--Fond1); }
+    25% { background-color: var(--Couleur--Fond2); }
+    50% { background-color: var(--Couleur--Fond3); }
+    75% {background-color: var(--Couleur--Fond2); }
+    100%{background-color: var(--Couleur--Fond1); }
     
   }
 
@@ -47,51 +64,98 @@
     
     
   }
+ #border{
   
+  border-bottom: var(--Couleur-Backdrop) solid 2px;
+  border-width: 10%;
+  display: inline;
+  width: 80%;
+  letter-spacing: -1px;
+  
+  
+ } 
+.typo{
+  font-family:'Times New Roman', Times, serif;
+  left: 5%;
+}
 
   
   #imageSurprise{
+    position: absolute;
     display:none;
-    z-index: 2;
+    z-index: 1;
     height: 150%;
     width: 100%;
+    object-fit: cover;
   }
  
-
-
- 
-  
   .imgContainer{
     display: flex;
     justify-content: flex-end;
   }
+
+  #BouttonFermerDialogue{
+    font-size: larger;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    width: 45%;
+    height: 50px;
+    cursor: pointer;
+    padding: 2%;
+    margin: 3%;
+  }
   .container{
+    width: 25%;
+    height: 75%;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 0px;
+    align-items: flex-end;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 1%;
+    margin: 4%;
    
   }
-  /* La Modal (arrière-plan) */
-.dialogue {
-  /*display: none; */
+#container2{
+  display:flex;
+}
+#bouton{
+  display:flex;
+  height: 22%;
+  flex-direction: column;
+  align-items: center;
+  
+}
+dialog {
+  border-color: var(--Couleur-Backdrop) ;
   position: fixed; 
   z-index: 1; 
-  left: 0;
-  top: 250px;
   width:50%;
-  height: 60%;
-  overflow: none; 
-  background-color: rgba(93, 188, 251, 0.5) ;
+  height: 80%;
+  border-radius: 15px;
+  padding: 3%;
+  overflow: hidden; 
+  border: solid 2px;
+  flex-direction: column;
+  background-color: white;
+  align-items: center;
+}
+#parent-container{
+  height: 52%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 90%;
+  padding: 10px;
+  text-align: center;
+  flex-wrap: wrap;
+  text-align: center;
 }
 
 body {
     font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue",
       Helvetica, Arial, "Lucida Grande", sans-serif;
-      animation: animationBackground 8s ease-in-out infinite;
-      
+      animation: animationBackground 15s ease-in-out infinite;
     color: white;
     text-align: center;
     height: 100%;
@@ -99,12 +163,15 @@ body {
     margin: 0;
   }
   #Titre{
-    
+    font-size: 5rem;
+    margin: 10%;
     height: 100px;
     animation:lePenduEnjoyIt 10s infinite;
   }
 
-  
+  #principal{
+    margin: 5%;
+  }
   .wrappper {
     width: 100%;
     margin: 0 auto;
@@ -135,9 +202,15 @@ body {
   p {
     font-size: 1.2em;
   }
-  
+  .container-bouton{
+    margin: 5%;
+    padding: 5%;
+    display: flex;
+    justify-content: space-between;
+  }
   Button {
-    background: #c1d72e;
+    margin: 3%;
+    background: var(--Couleur--principal);
     border-radius: 5px;
     border: solid 1px white;
     color: white;
@@ -161,7 +234,7 @@ body {
   
   .btn-2 {
     border-radius: 10px;
-    background: #c1d72e;
+    background: var(--Couleur--principal);
     color: white;
     border: solid 1px white;
     text-decoration: none;
@@ -180,6 +253,6 @@ body {
     border: solid 1px white;
     color: #c1d72e;
   }
-  ::backdrop{
-    background-color: rgba(93, 188, 251, 0.5);
+  dialog::backdrop{
+    background-color: var(--Couleur-Backdrop);
   }
