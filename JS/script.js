@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function(){
   setTimeout(Surprise, tempsAleatoire)
 })
 window.addEventListener('load', function(){
-  if (localStorage.getItem('cacherDialogue') === null)
+  if (localStorage.getItem('cacherDialogue') === undefined || localStorage.getItem('cacherDialogue') === null || this.localStorage.getItem('cacherDialogue') === "" )
     { 
      dialogue.showModal();
      console.log(localStorage.getItem('cacherDialogue'))
