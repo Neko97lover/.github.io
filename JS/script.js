@@ -24,18 +24,20 @@ const deuxJoueurs = document.getElementById("deuxJoueurs")
 document.addEventListener('DOMContentLoaded', function(){
   let tempsAleatoire = Math.random() * 10000 + 10000; //Temps avant que l'évènements se clenche
   setTimeout(Surprise, tempsAleatoire)
-  dialogue.showModal()
-  if (!localStorage.getItem('cacherDialogue'))
-     { 
-      dialogue.showModal();
-     }
 })
-
-//Fonction pour fermer la boite de dialogue 1 seule fois ou pour toujours
+window.addEventListener('load', function(){
+  if (localStorage.getItem('cacherDialogue') === "false")
+    { 
+     dialogue.showModal();
+     console.log(localStorage.getItem('cacherDialogue'))
+    }
+    console.log(localStorage.getItem('cacherDialogue'))
+})
+//Écouteur qui écoute si l'utilisateur veux fermer 1 seule fois ou pour toujours le dialogue
 FermerDialogue.addEventListener('click', FermerBoite)
 fermerDialogue.addEventListener('click', FermerToujours)
 function FermerToujours(){
-  localStorage.setItem('cacherDialogue', 'true');
+  localStorage.setItem('cacherDialogue', '');
   dialogue.close();
 }
 
